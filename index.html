@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Handson-12</title>
+</head>
+<style>
+    h2{
+        text-align: center;
+        text-decoration: underline;
+    }
+    #flex-container{
+        display: flex;
+        flex-direction: row;
+        justify-content:space-around;
+    }
+    .flex-box{
+        width: 200px;
+        height: 200px;
+        background-color: brown;
+        border: 2px solid black;
+    }
+    #button{
+        background-color: black;
+        color: aliceblue;
+        width: 100px;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+    #button:hover{
+        background-color: cornflowerblue;
+        color: black;
+    }
+    .one{
+        
+        background-color:cornflowerblue;
+        text-align: center;
+        color: rgb(7, 33, 82);
+        font-size: 20px;
+    
+    }
+    #text{
+        font-size: 25px;
+    }
+    .clock{
+    display: flex;
+}
+.clock div{
+    margin: 5px;
+}
+.clock span{
+    width: 100px;
+    height: 80px;
+    background: #F6E2FF;
+    opacity: 1;
+    color: #8A11BF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    border-radius: 2px;
+}
+.clock .text{
+    height: 20px;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.clock .dots{
+    font-size: 30px;
+    color: #8A11BF;
+    position: relative;
+    top: 10px;
+    background: white;
+}
+  
+</style>
+<body>
+
+    <h2>Js Handson-12(DOM)</h2>
+    
+    <p><b>1. Write the code to access element which is having id as "text"</b></p>
+    <p class="one">var x =document.getElementById("text").innerHTML = 'good evening'</p>
+
+    <p><b>2. Write the code to access element which is having tag as "h1"</b></p>
+    <p class="one">var y =document.getElementsByTagName("h1").innerHTML = 'access the tag'</p>
+
+    <p><b>3. Write the code to access element which is having class as "box"</b></p>
+    <p class="one">var z =document.getElementsByClassName('box').innerHTML = 'access the class'</p>
+
+
+    <p><b>4.Change the heading from ""Hello"" to ""Hello World"" using DOM functions</b></p>
+
+    <!-- <h1 id="heading">"Hello"</h1> -->
+
+    <p class="one">var i = document.querySelector("#heading").textContent = "Hello World"</p>
+
+
+    <p><b>5. Create three cards on HTML page and arrange them using flex property in row or horizontal direction and also create button at the bottom named "Change Flex direction". When user clicks on this button, the cards arrangement should be changed to vertical direction.</b></p>
+   <div id="flex-container">
+      <div class="flex-box">1</div>
+      <div class="flex-box">2</div>
+      <div class="flex-box">3</div>
+    </div><br>
+    <button id="button" onclick="onbuttonclick()">click to change</button>
+
+
+    <pre class="one">
+        function  onbuttonclick(){
+            var flex = document.getElementById('flex-container')
+            if(flex.style.flexDirection == "row"){
+                flex.style.flexDirection = "column"
+                console.log('column');
+            }
+            else{
+                flex.style.flexDirection = "row"
+                console.log('row');
+            }
+        }
+    </pre>
+
+    <p><b>6. What’s the difference between window vs document?</b></p>
+    <p class="one">Document:- The document object represent a web page that is loaded in the browser. By accessing the document object, we can access the element in the HTML page.</p>
+    <p class="one">Window :- The window object is the topmost object of the DOM hierarchy. It represents a browser window or frame that displays the contents of the webpage. Whenever a window appears on the screen to display the contents of the document, the window object is created.
+    </p>
+
+
+    <p><b>7. Add one style attribute and give text color as red and id attribute and give the id value as ""heading"" in the above given h1 tag using DOM functions"</b></p>
+    <h3>Hello</h3>
+
+    <pre class="one">
+        let back = document.getElementsByTagName('h3')[0];
+        back.setAttribute("id", "new");
+         back.setAttribute("style","color:red");
+    </pre>
+
+    <p><b>8.Create an HTML page having content as Hello world and a button named Replace Text. When user will click on this button page content should be changed to "Welcome to Elevation academy"</b></p>
+    <p id="text">Hello World</p>
+    <button id="button" onclick="myFunction()">Replace Text</button>
+
+
+    <pre class="one">
+        function myFunction(){
+            var x =document.getElementById("text");
+            if(x.innerHTML == "Hello World"){
+                x.innerHTML = "Welcome to Elevation Acadmey";
+            }
+            else{
+                x.innerHTML = "Hello World"
+            }
+        }
+        
+    </pre>
+
+    <p><b>9.Write code to implement timer clock using JS -- display HH:MM:SS -- the time should keep updating every second</b></p>
+    <div class="clock">
+       <div>
+           <span id="hour">00</span>
+           <span class="text">HOURS</span>
+       </div>
+       <span class="dots">:</span>
+        <div>
+           <span id="minutes">00</span>
+            <span class="text">Mins</span>
+        </div>
+        <span class="dots">:</span>
+        <div>
+            <span id="seconds">00</span>
+           <span class="text">Secs</span>
+        </div>
+    </div>  
+    
+
+
+
+
+    <p><b>10. Create a select drop down for selecting Year 20-21, 21-22 etc. Print the item text selected</b></p>
+
+    <form name="formid">
+        <select name="ddlselect" onchange="getdd1()">
+            <option value="">Select Year</option>
+            <option value="20-21">20-21</option>
+            <option value="20-21">21-22</option>
+            <option value="20-21">22-23</option>
+            <option value="20-21">23-24</option>
+            <option value="20-21">24-25</option>
+        </select>
+    </form><br>
+    <label id="lblmess"></label>
+
+    <pre class="one">
+        function getdd1(){
+            document.getElementById('lblmess').innerHTML=("The Selected Dropdown value is 
+            : "+formid.ddlselect[formid.ddlselect.selectedIndex].text)
+        }
+    </pre>
+
+
+    
+
+ 
+
+    <script src="main.js"></script>
+
+<script>
+
+
+
+ function getdd1(){
+     document.getElementById('lblmess').innerHTML=("The Selected Dropdown value is : "+formid.ddlselect[formid.ddlselect.selectedIndex].text)
+    }
+</script>
+
+</body>
+</html>
